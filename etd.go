@@ -4,9 +4,9 @@ type Station struct {
 	Uri        string `xml:"uri" json:"uri"`
 	DateString string `xml:"date" json:"date"`
 	TimeString string `xml:"time" json:"time"`
-	Name       string `xml:"station>name" json:"station>name"`
-	Abbr       string `xml:"station>abbr" json:"station>abbr"`
-	ETD        []ETD  `xml:"station>etd" json:"station>etd"`
+	Name       string `xml:"station>name" json:"name"`
+	Abbr       string `xml:"station>abbr" json:"abbr"`
+	ETD        []ETD  `xml:"station>etd" json:"etd"`
 }
 
 type ETD struct {
