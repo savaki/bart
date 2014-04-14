@@ -14,6 +14,7 @@ var apiKey = os.Getenv("API_KEY")
 func main() {
 	http.HandleFunc("/api/route.aspx", handler)
 	http.HandleFunc("/api/etd.aspx", handler)
+	http.HandleFunc("/api/stn.aspx", handler)
 
 	fmt.Println("listening...")
 	err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
@@ -36,6 +37,10 @@ func handler(w http.ResponseWriter, req *http.Request) {
 	case "etd":
 		href = "http://api.bart.gov/api/etd.aspx"
 		value = &Station{}
+
+	case "stninfo", "stnaccess", "stns":
+		href = "http://api.bart.gov/api/stn.aspx"
+		value = &Stations{}
 	}
 
 	query := req.RequestURI
