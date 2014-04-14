@@ -43,7 +43,9 @@ func handler(w http.ResponseWriter, req *http.Request) {
 		href = href + query[offset:]
 	}
 	fmt.Println(href)
-	href = href + "&key=" + apiKey
+	if req.Form["key"] == nil || len(req.Form["key"]) == 0 {
+		href = href + "&key=" + apiKey
+	}
 
 	res, err := http.Get(href)
 	if err != nil {
